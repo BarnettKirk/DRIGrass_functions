@@ -417,10 +417,20 @@ coversplit_herb <- function(x){
   x <- x[x$treatment!='Ambient(no shelter)'&x$treatment!='Increased'&x$treatment!='Seasonal',]
   x$treatment <- factor(x$treatment, levels=c("Ambient", "Drought","Pulsed drought"))
   x$herb <- factor(x$herb, levels=c("Ambient","Added"))
+  filtercolumns <- c("plot","treatment","herb","side")
+  colskeep <- colSums(x[,!names(x)%in%filtercolumns]) > 0
+  colskeep <- colskeep[colskeep == TRUE]
+  colskeep <- c(filtercolumns,names(colskeep))
+  x <- x[,names(x)%in%colskeep]
   x
 }
 coversplit_noherb <- function(x){
   x <- x[x$treatment!='Ambient(no shelter)'&x$herb!='Added',]
   x$treatment <- factor(x$treatment, levels=c("Ambient","Increased", "Drought","Pulsed drought","Seasonal"))
+  filtercolumns <- c("plot","treatment","herb","side")
+  colskeep <- colSums(x[,!names(x)%in%filtercolumns]) > 0
+  colskeep <- colskeep[colskeep == TRUE]
+  colskeep <- c(filtercolumns,names(colskeep))
+  x <- x[,names(x)%in%colskeep]
   x
 }
