@@ -576,3 +576,15 @@ recoderFunc <- function(data, oldvalue, newvalue) {
   newvec
   
 }
+###############Splitting for Cover community
+coversplit_herb <- function(x){
+  x <- x[x$treatment!='Ambient(no shelter)'&x$treatment!='Increased'&x$treatment!='Seasonal',]
+  x$treatment <- factor(x$treatment, levels=c("Ambient", "Drought","Pulsed drought"))
+  x$herb <- factor(x$herb, levels=c("Ambient","Added"))
+  x
+}
+coversplit_noherb <- function(x){
+  x <- x[x$treatment!='Ambient(no shelter)'&x$herb!='Added',]
+  x$treatment <- factor(x$treatment, levels=c("Ambient","Increased", "Drought","Pulsed drought","Seasonal"))
+  x
+}
