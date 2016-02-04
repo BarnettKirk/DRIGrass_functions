@@ -438,3 +438,16 @@ coversplit_noherb <- function(x){
   x <- x[,names(x)%in%colskeep]
   x
 }
+
+################UnitcirclePCA
+UnitCirclePCA <- function(loading, names, pt.size=0.5, pt.col= "gray20", 
+                          text.size=0.6, text.col="gray30", symb=16){
+  theta <- seq(0,2*pi,length.out = 100)
+  circle <- data.frame(x = cos(theta), y = sin(theta))
+  plot(circle$x,circle$y, type="n", xlab="PC1",ylab="PC2")
+  rect(-1.5,-1.5,1.5,1.5, col="gray80")
+  abline(h=seq(-1,1, 0.5), v=seq(-1,1, 0.5) ,lty=1, col="white")
+  lines(circle$x, circle$y, lwd=2)
+  points(loading$PC1, loading$PC2,col=pt.col, pch=symb, cex=pt.size)
+  text(loading$PC1, loading$PC2, labels=names, col=text.col, cex=text.size)
+}
