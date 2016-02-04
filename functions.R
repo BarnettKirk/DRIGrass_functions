@@ -210,7 +210,7 @@ biomass.harvest.scale.all <- function(x){
     x_agg <- x_agg[x_agg$spp != "Dead.raked",]
   }
   x_agg$scaled[x_agg$type == "W"] <- x_agg$mass[x_agg$type == "W"]
-  print(x_agg)
+  x_agg
 }
 #######################################################################
 
@@ -299,7 +299,7 @@ biomass.harvest.scale.other <- function(x){
   x_agg$scaled <- round(x_agg$scaled, digits=4)
   x_agg <- x_agg[x_agg$spp != "Unsorted",]
   
-  print(x_agg)
+  x_agg
 }
 
 ##################################Add factors to DRIGRass
