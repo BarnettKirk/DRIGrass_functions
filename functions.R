@@ -76,8 +76,6 @@ biomass.harvest.scale.all <- function(x){
   
   ####Biomass cleaning script
   
-  x <- biomass
-  
   x$mass <- as.numeric(as.character(x$mass)) ##turn mass numeric
   
   x$spp <- recode(x$spp, "c('Paspalum dilitatum','Paspalum notatum','Paspalum spp','Paspalum.dilitatum','Paspalum.spp')= 'Paspalum spp'") #Rename all paspalums species
@@ -212,16 +210,14 @@ biomass.harvest.scale.all <- function(x){
     x_agg <- x_agg[x_agg$spp != "Dead.raked",]
   }
   x_agg$scaled[x_agg$type == "W"] <- x_agg$mass[x_agg$type == "W"]
-  biomass <<- x_agg
+  print(x_agg)
 }
 #######################################################################
 
 biomass.harvest.scale.other <- function(x){
   
   ####Biomass cleaning script
-  
-  x <- biomass
-  
+
   x$mass <- as.numeric(as.character(x$mass)) ##turn mass numeric
   
   x$spp <- recode(x$spp, "c('Paspalum dilitatum','Paspalum notatum','Paspalum spp')= 'Paspalum spp'") #Rename all paspalums species
@@ -303,7 +299,7 @@ biomass.harvest.scale.other <- function(x){
   x_agg$scaled <- round(x_agg$scaled, digits=4)
   x_agg <- x_agg[x_agg$spp != "Unsorted",]
   
-  biomass <<- x_agg
+  print(x_agg)
 }
 
 ##################################Add factors to DRIGRass
