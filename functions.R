@@ -80,6 +80,8 @@ biomass.harvest.scale.all <- function(x){
   
   x$spp <- recode(x$spp, "c('Paspalum dilitatum','Paspalum notatum','Paspalum spp','Paspalum.dilitatum','Paspalum.spp')= 'Paspalum spp.'") #Rename all paspalums species
   
+  x$spp <- recode(x$spp, "c('Setaria.parviflora','Setaria parviflora','Setaria.sp.','Setaria sp.')= 'Setaria.spp.'") #Rename all Setaria species
+  
   x <- aggregate(mass ~ plot+type+spp, data=x, FUN=sum) # add multiple paspalum together
   
   x$spp <- factor(x$spp) # change factors
@@ -221,6 +223,8 @@ biomass.harvest.scale.other <- function(x){
   x$mass <- as.numeric(as.character(x$mass)) ##turn mass numeric
   
   x$spp <- recode(x$spp, "c('Paspalum dilitatum','Paspalum notatum','Paspalum spp')= 'Paspalum spp.'") #Rename all paspalums species
+  
+  x$spp <- recode(x$spp, "c('Setaria.parviflora','Setaria parviflora','Setaria.sp.','Setaria sp.')= 'Setaria.spp.'") #Rename all Setaria species
   
   x <- aggregate(mass ~ plot+type+spp, data=x, FUN=sum) # add multiple paspalum together
   
