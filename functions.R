@@ -78,7 +78,7 @@ biomass.harvest.scale.all <- function(x){
   
   x$mass <- as.numeric(as.character(x$mass)) ##turn mass numeric
   
-  x$spp <- recode(x$spp, "c('Paspalum dilitatum','Paspalum notatum','Paspalum spp','Paspalum.dilitatum','Paspalum.spp')= 'Paspalum spp.'") #Rename all paspalums species
+  x$spp <- recode(x$spp, "c('Paspalum dilitatum','Paspalum notatum','Paspalum spp','Paspalum.dilitatum','Paspalum.spp','Paspalum.notatum')= 'Paspalum spp.'") #Rename all paspalums species
   
   x$spp <- recode(x$spp, "c('Setaria.parviflora','Setaria parviflora','Setaria.sp.','Setaria sp.')= 'Setaria.spp.'") #Rename all Setaria species
   
@@ -224,7 +224,7 @@ biomass.harvest.scale.other <- function(x){
 
   x$mass <- as.numeric(as.character(x$mass)) ##turn mass numeric
   
-  x$spp <- recode(x$spp, "c('Paspalum dilitatum','Paspalum notatum','Paspalum spp')= 'Paspalum spp.'") #Rename all paspalums species
+  x$spp <- recode(x$spp, "c('Paspalum dilitatum','Paspalum notatum','Paspalum spp','Paspalum.dilitatum','Paspalum.spp','Paspalum.notatum')= 'Paspalum spp.'") #Rename all paspalums species
   
   x$spp <- recode(x$spp, "c('Setaria.parviflora','Setaria parviflora','Setaria.sp.','Setaria sp.')= 'Setaria.spp.'") #Rename all Setaria species
   
