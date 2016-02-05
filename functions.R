@@ -452,3 +452,25 @@ UnitCirclePCA <- function(loading, labs, pt.size=0.5, pt.col= "gray20",
   points(loading$PC1, loading$PC2,col=pt.col, pch=symb, cex=pt.size)
   text(loading$PC1, loading$PC2, labels=labs, col=text.col, cex=text.size, font=3)
 }
+#####Community stitch function
+comm_time_stich <- function(dflist, timesnames){
+  filtercolumns <- c("plot","treatment","herb","side")
+  total_biomass_time <- numeric()
+  for(i in 1:length(dflist)){
+    dfshape <- reshape(dflist[[i]], 
+                       varying = names(dflist[[i]])[!names(dflist[[i]])%in%filtercolumns], 
+                       v.names = "mass",
+                       timevar = "spp", 
+                       times = names(dflist[[i]])[!names(dflist[[i]])%in%filtercolumns], 
+                       direction = "long")
+    dfshape$time <- timesnames[i]
+    total_biomass_time <- rbind(total_biomass_time,dfshape)
+  }
+  newnames <- unique(total_biomass_time$spp)
+  filtercolumnswide <- c(filtercolumns,"id","time")
+  testdf <- reshape(total_biomass_time, idvar = c("plot","treatment","herb","side","time","id"), timevar = "spp", direction = "wide")
+  names(testdf)[!names(testdf)%in%filtercolumnswide] <-  newnames
+  testdf[is.na(testdf)] <- 0
+  row.names(testdf) <- NULL
+  testdf
+}
