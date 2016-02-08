@@ -325,7 +325,7 @@ add.factors <- function(x){
   
   herb <- x$plot
   herb<-recode(herb, "c(4,6,8,10,12,13,19,20,23,26,27,28,31,35,36,38,41,42,44,50,51,54,55,60)='Added'")
-  herb<- recode(herb, "c(1,11,14,15,16,17,18,2,21,22,24,25,29,3,30,32,33,34,37,39,40,43,45,46,47,48,49,5,52,53,56,57,58,59,7,9)='Ambient'")
+  herb<- recode(herb, "c(1,11,14,15,16,17,18,2,21,22,24,25,29,3,30,32,33,34,37,39,40,43,45,46,47,48,49,5,52,53,56,57,58,59,7,9)='Background'")
   x$herb<-herb
   
   side <- x$plot
@@ -334,7 +334,7 @@ add.factors <- function(x){
   
   x$side <- side
   x$side <- factor(x$side)
-  x$herb <- factor(x$herb, levels=c("Ambient","Added"))
+  x$herb <- factor(x$herb, levels=c("Background","Added"))
   x$treatment <- factor(x$treatment, levels = c("Ambient(no shelter)", "Ambient", "Increased","Drought","Pulsed drought", "Seasonal"))
   
   x
@@ -420,7 +420,7 @@ recoderFunc <- function(data, oldvalue, newvalue) {
 coversplit_herb <- function(x){
   x <- x[x$treatment!='Ambient(no shelter)'&x$treatment!='Increased'&x$treatment!='Seasonal',]
   x$treatment <- factor(x$treatment, levels=c("Ambient", "Drought","Pulsed drought"))
-  x$herb <- factor(x$herb, levels=c("Ambient","Added"))
+  x$herb <- factor(x$herb, levels=c("Background","Added"))
   filtercolumns <- c("plot","treatment","herb","side")
   colskeep <- colSums(x[,!names(x)%in%filtercolumns]) > 0
   colskeep <- colskeep[colskeep == TRUE]
