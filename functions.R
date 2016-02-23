@@ -474,3 +474,11 @@ comm_time_stich <- function(dflist, timesnames){
   row.names(testdf) <- NULL
   testdf
 }
+##########Compute relative biomasss
+relabiomass <- function(df){
+  xdf <- numeric()
+  for(i in 1:nrow(df)){
+    xdf <- rbind(xdf,df[i,]/rowSums(df[i,]))
+  }
+  xdf
+}
