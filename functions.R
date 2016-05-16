@@ -314,12 +314,12 @@ biomass.harvest.scale.other <- function(x){
 
 add.factors <- function(x){
   treatment<-x$plot
-  treatment<-recode(treatment, "c(2,10,12,18,24,27,36,39,44,46,53,55)='Ambient'")
-  treatment<-recode(treatment, "c(1,8,13,16,26,29,31,33,47,50,52,54)='Pulsed drought'")
-  treatment<-recode(treatment, "c(6,7,15,20,21,23,34,38,42,49,51,58)='Ambient(no shelter)'")
-  treatment<-recode(treatment, "c(3,17,22,40,45,59)='Seasonal'")
-  treatment<-recode(treatment, "c(4,5,11,19,28,30,35,37,41,43,56,60)='Drought'")
-  treatment<-recode(treatment, "c(9,14,25,32,48,57)='Increased'")
+  treatment<-recode(treatment, "c(02,2,10,12,18,24,27,36,39,44,46,53,55)='Ambient'")
+  treatment<-recode(treatment, "c(01,1,08,8,13,16,26,29,31,33,47,50,52,54)='Pulsed drought'")
+  treatment<-recode(treatment, "c(06,6,07,7,15,20,21,23,34,38,42,49,51,58)='Ambient(no shelter)'")
+  treatment<-recode(treatment, "c(03,3,17,22,40,45,59)='Seasonal'")
+  treatment<-recode(treatment, "c(04,4,05,5,11,19,28,30,35,37,41,43,56,60)='Drought'")
+  treatment<-recode(treatment, "c(09,9,14,25,32,48,57)='Increased'")
   x$treatment<-treatment
   x$plot <- as.factor(x$plot)
   
