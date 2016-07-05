@@ -505,7 +505,7 @@ custom_hist <- function (x)
            y0=0,
            x1=Mode(x),
            y1=max(histinfo$counts), col="green")
-  text(x=histinfo$mids[5],y=c(max(histinfo$counts)*.9,
+  text(x=histinfo$mids[length(histinfo$mids)],y=c(max(histinfo$counts)*.9,
                               max(histinfo$counts)*.8,
                               max(histinfo$counts)*.7), 
        labels=c("Mean","Median","Mode"), col=c("blue","red","green"))
