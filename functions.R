@@ -496,15 +496,15 @@ custom_hist <- function (x)
   segments(x0=mean(x),
            y0=0,
            x1=mean(x),
-           y1=max(histinfo$counts), col="blue")
+           y1=max(histinfo$counts), col="blue", lwd=2)
   segments(x0=median(x),
            y0=0,
            x1=median(x),
-           y1=max(histinfo$counts), col="red")
+           y1=max(histinfo$counts), col="red", lwd=2)
   segments(x0=Mode(x),
            y0=0,
            x1=Mode(x),
-           y1=max(histinfo$counts), col="green")
+           y1=max(histinfo$counts), col="green", lwd=2)
   text(x=histinfo$mids[length(histinfo$mids)],y=c(max(histinfo$counts)*.9,
                               max(histinfo$counts)*.8,
                               max(histinfo$counts)*.7), 
