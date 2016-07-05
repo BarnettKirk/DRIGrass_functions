@@ -482,3 +482,31 @@ relabiomass <- function(df){
   }
   xdf
 }
+################Custom histogram that gives mean, median, mode
+custom_hist <- function (x)
+{
+  Mode <- function(y) {
+    uy <- unique(y)
+    uy[which.max(tabulate(match(y, uy)))]
+  }
+  histinfo <- hist(x)
+  print(paste0("Mean: ",mean(x)))
+  print(paste0("Median: ",median(x)))
+  print(paste0("Mode: ",Mode(x)))
+  segments(x0=mean(x),
+           y0=0,
+           x1=mean(x),
+           y1=max(histinfo$counts), col="blue")
+  segments(x0=median(x),
+           y0=0,
+           x1=median(x),
+           y1=max(histinfo$counts), col="red")
+  segments(x0=Mode(x),
+           y0=0,
+           x1=Mode(x),
+           y1=max(histinfo$counts), col="green")
+  text(x=histinfo$mids[5],y=c(max(histinfo$counts)*.9,
+                              max(histinfo$counts)*.8,
+                              max(histinfo$counts)*.7), 
+       labels=c("Mean","Median","Mode"), col=c("blue","red","green"))
+}
