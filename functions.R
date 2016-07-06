@@ -439,7 +439,7 @@ coversplit_noherb <- function(x){
   x
 }
 coversplit <- function(x){
-  x <- x[x$treatment!='Ambient(no shelter)']
+  x <- x[x$treatment!='Ambient(no shelter)',]
   x$treatment <- factor(x$treatment, levels=c("Ambient","Increased", "Drought","Pulsed drought","Seasonal"))
   filtercolumns <- c("plot","treatment","herb","side")
   colskeep <- colSums(x[,!names(x)%in%filtercolumns]) > 0
