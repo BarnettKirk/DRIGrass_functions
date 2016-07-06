@@ -438,7 +438,16 @@ coversplit_noherb <- function(x){
   x <- x[,names(x)%in%colskeep]
   x
 }
-
+coversplit <- function(x){
+  x <- x[x$treatment!='Ambient(no shelter)']
+  x$treatment <- factor(x$treatment, levels=c("Ambient","Increased", "Drought","Pulsed drought","Seasonal"))
+  filtercolumns <- c("plot","treatment","herb","side")
+  colskeep <- colSums(x[,!names(x)%in%filtercolumns]) > 0
+  colskeep <- colskeep[colskeep == TRUE]
+  colskeep <- c(filtercolumns,names(colskeep))
+  x <- x[,names(x)%in%colskeep]
+  x
+}
 ################UnitcirclePCA
 UnitCirclePCA <- function(loading, labs, pt.size=0.5, pt.col= "gray20", 
                           text.size=0.6, text.col="gray30", symb=16){
