@@ -519,3 +519,9 @@ custom_hist <- function (x)
                               max(histinfo$counts)*.7), 
        labels=c("Mean","Median","Mode"), col=c("blue","red","green"))
 }
+##############Labels and colors used in my thesis
+rainfall_lab <- c("Ambient","Increased \nmagnitude","Reduced \nmagnitude","Reduced \nfrequency","Summer \ndrought")
+rainfall_herb_lab <- c("Ambient","Reduced \nmagnitude","Reduced \nfrequency","Non-added","Added")
+
+rainfall_col <- c("#2b83ba","#abdda4","#5e3c99","#fdae61","#d73027")
+rainfall_herb_col <- c("#2b83ba","#2b83ba","#5e3c99","#5e3c99","#fdae61","#fdae61")
