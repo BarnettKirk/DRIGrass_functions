@@ -525,3 +525,31 @@ rainfall_herb_lab <- c("Ambient","Reduced \nmagnitude","Reduced \nfrequency","No
 
 rainfall_col <- c("#2b83ba","#abdda4","#5e3c99","#fdae61","#d73027")
 rainfall_herb_col <- c("#2b83ba","#2b83ba","#5e3c99","#5e3c99","#fdae61","#fdae61")
+#plotresid from RVAideMemoire package
+plotresid <- function (model, shapiro = FALSE) 
+{
+  res <- get.res(model)
+  model.res <- res$residuals
+  res.lab <- res$lab
+  model.fit <- get.fit(model)
+  opar <- par(no.readonly = TRUE)
+  on.exit(par(opar))
+  if (!inherits(model, "mlm")) {
+    par(mfrow = c(1, 2))
+    plot(model.fit, model.res, xlab = "Fitted values", ylab = res.lab, 
+         main = paste(res.lab, "vs fitted"))
+    abline(h = 0, col = "grey", lty = 3)
+    panel.smooth(model.fit, model.res)
+    qqPlot(model.res, lwd = 1, grid = FALSE, xlab = "Theoretical quantiles", 
+           ylab = "Sample quantiles")
+    if (shapiro) {
+      shapiro.test(model.res)
+    }
+  }
+  else {
+    mqqnorm(model.res)
+    if (shapiro) {
+      mshapiro.test(model.res)
+    }
+  }
+}
