@@ -525,6 +525,9 @@ rainfall_herb_lab <- c("Ambient","Reduced \nmagnitude","Reduced \nfrequency","No
 
 rainfall_col <- c("#2b83ba","#abdda4","#5e3c99","#fdae61","#d73027")
 rainfall_herb_col <- c("#2b83ba","#2b83ba","#5e3c99","#5e3c99","#fdae61","#fdae61")
+
+rainfall_lab.short <- c("Amb","IA","RA","RF","SD")
+rainfall_herb_lab.short <- paste0(c("Amb","RA","RF",expression(RH[0],RH["+"])))
 ###########Percent difference function
 per_diff <- function(x,y){round((abs(x-y)/mean(c(x,y))*100),0)}
 
